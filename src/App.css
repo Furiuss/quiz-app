@@ -30,8 +30,13 @@
   gap: 10px;
 }
 
-.Quiz .nextQuestion-btn {
+.Quiz .nextQuestion-btn,
+.Quiz .finish-btn {
   width: 200px;
   background-color: indigo;
   margin-top: 40px;
+}
+
+.Quiz .finish-btn {
+  background-color: lawngreen;
 }
