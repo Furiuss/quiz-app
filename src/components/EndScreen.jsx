@@ -2,7 +2,7 @@ import {useContext} from 'react'
 import {QuizContext} from '../helpers/Contexts'
 
 export const EndScreen = () => {
-  const {score, setScore, setGameState} = useContext(QuizContext)
+  const {score, setScore, setGameState, Questions} = useContext(QuizContext)
 
   const resetGame = () => {
     setScore(0)
@@ -12,7 +12,7 @@ export const EndScreen = () => {
   return (
     <div className="End">
       <h1>Quiz finished</h1>
-      <h1>{score}/3</h1>
+      <h1>{score}/{Questions.length}</h1>
       <button onClick={resetGame}>Restart Quiz</button>
     </div>
   )

@@ -1,9 +1,8 @@
 import { useState, useContext, useEffect } from "react";
-import { Questions } from "../helpers/QuestionBank";
 import { QuizContext } from "../helpers/Contexts";
 
 export const Quiz = () => {
-  const { score, setScore, setGameState } = useContext(QuizContext);
+  const { score, setScore, setGameState, Questions } = useContext(QuizContext);
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [optionChosen, setOptionChosen] = useState("");

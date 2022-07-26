@@ -4,6 +4,7 @@ import { EndScreen } from "./components/EndScreen";
 import { MainMenu } from "./components/MainMenu";
 import { Quiz } from "./components/Quiz";
 
+import { Questions } from "./helpers/QuestionBank";
 import { QuizContext } from "./helpers/Contexts";
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   return (
     <div className="App">
       <h1>QuizApp</h1>
-      <QuizContext.Provider value={{gameState, setGameState, score, setScore}}>
+      <QuizContext.Provider value={{gameState, setGameState, score, setScore, Questions}}>
         {gameState === "menu" && <MainMenu />}
         {gameState === "quiz" && <Quiz />}
         {gameState === "endScreen" && <EndScreen />}
