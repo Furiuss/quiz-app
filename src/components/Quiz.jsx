@@ -6,28 +6,29 @@ export const Quiz = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [optionChosen, setOptionChosen] = useState("");
-  const [errorMessage, setErrorMessage] = useState(false)
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  let btnText = "";
+  let btnClassName = "";
 
   const nextQuestion = () => {
     if (!optionChosen) {
       setErrorMessage(true);
       return;
-    };
+    }
 
     if (Questions[currentQuestion].answer == optionChosen) {
       setScore(score + 1);
     }
+
     setCurrentQuestion(currentQuestion + 1);
-    setOptionChosen("")
-    setErrorMessage(false)
-  };
 
-  const finishQuiz = () => {
-    if (Questions[currentQuestion].answer == optionChosen) {
-      setScore(score + 1);
+    setOptionChosen("");
+    setErrorMessage(false);
+
+    if (currentQuestion == Questions.length - 1) {
+      setGameState("endScreen");
     }
-
-    setGameState("endScreen");
   };
 
   const Alert = () => {
@@ -38,7 +39,7 @@ export const Quiz = () => {
         </span>
       );
     }
-    return ""
+    return "";
   };
 
   return (
@@ -62,15 +63,11 @@ export const Quiz = () => {
         </button>
       </div>
 
-      {currentQuestion == Questions.length - 1 ? (
-        <button onClick={finishQuiz} className="finish-btn">
-          Finish Quiz
-        </button>
-      ) : (
-        <button onClick={nextQuestion} className="nextQuestion-btn">
-          Next Question
-        </button>
-      )}
+      {
+        currentQuestion == Questions.length - 1
+        ? <button onClick={nextQuestion} className="finish-btn">Finish Game</button>
+        : <button onClick={nextQuestion} className="nextQuestion-btn">Next Question</button>
+      }      
     </div>
   );
 };
