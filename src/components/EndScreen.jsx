@@ -4,7 +4,9 @@ import {QuizContext} from '../helpers/Contexts'
 export const EndScreen = () => {
   const {score, setScore, setGameState, Questions} = useContext(QuizContext)
 
-  const resetGame = () => {
+  const resetGame = (e) => {
+    e.preventDefault()
+
     setScore(0)
     setGameState("menu")
   }
