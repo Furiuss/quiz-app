@@ -5,7 +5,8 @@
  flex-direction: column;
 }
 
-.Menu {
+.Menu,
+.Quiz {
   width: 500px;
   height: 500px;
   border-radius: 10px;
@@ -16,8 +17,21 @@
   align-items: center;
 }
 
-.Menu button {
+.Menu button,
+.Quiz button {
   width: 300px;
   height: 50px;
   font-size: 20px;
+}
+
+.Quiz .options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.Quiz .nextQuestion-btn {
+  width: 200px;
+  background-color: indigo;
+  margin-top: 40px;
 }
