@@ -8,9 +8,6 @@ export const Quiz = () => {
   const [optionChosen, setOptionChosen] = useState("");
   const [errorMessage, setErrorMessage] = useState(false);
 
-  let btnText = "";
-  let btnClassName = "";
-
   const nextQuestion = () => {
     if (!optionChosen) {
       setErrorMessage(true);
