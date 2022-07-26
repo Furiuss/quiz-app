@@ -5,7 +5,7 @@ export const Questions = [
     optionB: "André",
     optionC: "Matheus",
     optionD: "Filipe",
-    answer: "C"
+    answer: "B"
   },
   {
     prompt: "How many mundial titles does Santos have?",
