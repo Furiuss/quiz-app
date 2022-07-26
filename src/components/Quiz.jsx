@@ -1,4 +1,4 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { QuizContext } from "../helpers/Contexts";
 
 export const Quiz = () => {
@@ -6,12 +6,20 @@ export const Quiz = () => {
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [optionChosen, setOptionChosen] = useState("");
+  const [errorMessage, setErrorMessage] = useState(false)
 
   const nextQuestion = () => {
+    if (!optionChosen) {
+      setErrorMessage(true);
+      return;
+    };
+
     if (Questions[currentQuestion].answer == optionChosen) {
       setScore(score + 1);
     }
     setCurrentQuestion(currentQuestion + 1);
+    setOptionChosen("")
+    setErrorMessage(false)
   };
 
   const finishQuiz = () => {
@@ -22,9 +30,23 @@ export const Quiz = () => {
     setGameState("endScreen");
   };
 
+  const Alert = () => {
+    if (errorMessage) {
+      return (
+        <span style={{ color: "#e74c3c", fontWeight: "bold" }}>
+          Choose some option!
+        </span>
+      );
+    }
+    return ""
+  };
+
   return (
     <div className="Quiz">
       <h1>{Questions[currentQuestion].prompt}</h1>
+      <br />
+      <Alert />
+      <br />
       <div className="options">
         <button onClick={() => setOptionChosen("A")}>
           {Questions[currentQuestion].optionA}
